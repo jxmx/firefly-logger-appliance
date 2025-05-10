@@ -1,0 +1,18 @@
+Source: firefly-logger-appliance
+Section: hamradio
+Priority: optional
+Maintainer: Jason McCormick <jason@mfamily.org>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.5.1
+Homepage: https://github.com/jxmx/firefly-logger-appliance
+Vcs-Browser: https://github.com/jxmx/firefly-logger-appliance
+Vcs-Git: https://github.com/jxmx/firefly-logger-appliance
+Rules-Requires-Root: binary-targets
+
+Package: firefly-logger-appliance
+Architecture: all
+Depends: ${misc:Depends}, cockpit, cockpit-networkmanager,
+ cockpit-packagekit, cockpit-sosreport, cockpit-wifimanager,
+ cockpit-storaged, cockpit-system, cockpit-ws, firewalld,
+ vim-nox, avahi-daemon, firefly-logger
+Description: Firefly Logger Appliance tools and configs
