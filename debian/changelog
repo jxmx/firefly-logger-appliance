@@ -1,3 +1,10 @@
+firefly-logger-appliance (1.0.2-1) stable; urgency=medium
+
+  * Remove all apache2 references
+  * Remove cockpit.socket enable, it's default
+
+ -- Jason McCormick <jason@mfamily.org>  Sat, 10 May 2025 12:13:36 -0400
+
 firefly-logger-appliance (1.0.1-1) stable; urgency=medium
 
   * fix postinst 

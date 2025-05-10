@@ -16,23 +16,7 @@
 # the debian-policy package
 #
 
-if [ -e /usr/share/apache2/apache2-maintscript-helper ] ; then
-    . /usr/share/apache2/apache2-maintscript-helper
-fi
-
 do_configure() {
-
-	#Apache Management
-    if [ -e /usr/sbin/apache2 ]; then
-        apache2_invoke enmod ssl || exit $?
-        apache2_invoke ensite default-ssl || exit $?
-		apache2_invoke enmod headers || exit $?
-		apache2_invoke enconf nocache || exit $?
-    fi
-
-	# Services to start on boot
-	deb-systemd-invoke enable apache2
-	deb-systemd-invoke enable cockpit.socket
 
 	# Setup avahi-daemon
 	perl -pi -e 's/^publish-workstation=[A-Za-z]+\s?$/publish-workstation=yes\n/' /etc/avahi/avahi-daemon.conf

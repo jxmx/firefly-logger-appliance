@@ -3,7 +3,7 @@
 #
 SRCNAME 	= firefly-logger-appliance
 PKGNAME 	= $(SRCNAME)
-RELVER 		= 1.0.1
+RELVER 		= 1.0.2
 DEBVER 		= 1
 RELPLAT 	?= deb$(shell lsb_release -rs 2> /dev/null)
 
