@@ -14,5 +14,5 @@ Architecture: all
 Depends: ${misc:Depends}, cockpit, cockpit-networkmanager,
  cockpit-packagekit, cockpit-sosreport, cockpit-wifimanager,
  cockpit-storaged, cockpit-system, cockpit-ws, firewalld,
- vim-nox, avahi-daemon, firefly-logger
+ vim-nox, avahi-daemon, firefly-logger, wsjt2ffdl
 Description: Firefly Logger Appliance tools and configs
