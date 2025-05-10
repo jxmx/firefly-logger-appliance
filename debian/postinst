@@ -15,7 +15,6 @@
 # for details, see https://www.debian.org/doc/debian-policy/ or
 # the debian-policy package
 #
-set -e
 
 if [ -e /usr/share/apache2/apache2-maintscript-helper ] ; then
     . /usr/share/apache2/apache2-maintscript-helper
@@ -34,8 +33,6 @@ do_configure() {
 	# Services to start on boot
 	deb-systemd-invoke enable apache2
 	deb-systemd-invoke enable cockpit.socket
-
-	set -e
 
 	# Setup avahi-daemon
 	perl -pi -e 's/^publish-workstation=[A-Za-z]+\s?$/publish-workstation=yes\n/' /etc/avahi/avahi-daemon.conf
