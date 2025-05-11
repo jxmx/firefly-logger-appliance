@@ -25,6 +25,17 @@ do_configure() {
 	deb-systemd-invoke enable avahi-daemon
 	deb-systemd-invoke restart avahi-daemon
 
+	# Services to start on boot
+	deb-systemd-invoke enable cockpit.socket
+
+	# Change default firewalld zone
+	if [ "$(firewall-cmd --state)" = "running" ]; then
+		deb-systemd-invoke reload firewalld
+		firewall-cmd --set-default-zone=ffdl
+	else
+		firewall-offline-cmd --set-default-zone=ffdl
+	fi
+
 	# Customize dphys-swapfile if its installed
 	if [ -f /etc/dphys-swapfile ]; then
 		# Undo the previous swap manipulations
