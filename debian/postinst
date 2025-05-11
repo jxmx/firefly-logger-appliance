@@ -25,16 +25,6 @@ do_configure() {
 	deb-systemd-invoke enable avahi-daemon
 	deb-systemd-invoke restart avahi-daemon
 
-	# Rewrite the motd
-	cat - > /etc/motd <<EOF
-
-            Welcome to Firefly Logger
-
- * Package updates are obtained through the Cockpit web
-   console or by typing 'sudo apt update && sudo apt upgrade -y'
-
-EOF
-
 	# Customize dphys-swapfile if its installed
 	if [ -f /etc/dphys-swapfile ]; then
 		# Undo the previous swap manipulations
@@ -49,7 +39,6 @@ EOF
 			fi
 		fi
 		deb-systemd-invoke enable dphys-swapfile
-	
 	fi
 
 	[ -f /boot/firmware/wifi.nmconnection ] && rm -f /boot/firmware/wifi.nmconnection

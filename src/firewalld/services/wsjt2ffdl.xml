@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>WSJT2FFDL</short>
+  <description>Incoming WSJT-X to FFDL</description>
+  <port port="2237" protocol="udp"/>
+</service>
+
