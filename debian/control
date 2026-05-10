@@ -11,8 +11,5 @@ Rules-Requires-Root: binary-targets
 
 Package: firefly-logger-appliance
 Architecture: all
-Depends: ${misc:Depends}, cockpit, cockpit-networkmanager,
- cockpit-packagekit, cockpit-sosreport, cockpit-wifimanager,
- cockpit-storaged, cockpit-system, cockpit-ws, firewalld,
- vim-nox, avahi-daemon, firefly-logger, wsjt2ffdl
+Depends: ${misc:Depends}, vim-nox, avahi-daemon, firefly-logger
 Description: Firefly Logger Appliance tools and configs

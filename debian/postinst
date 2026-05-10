@@ -21,20 +21,8 @@ do_configure() {
 	# Setup avahi-daemon
 	perl -pi -e 's/^publish-workstation=[A-Za-z]+\s?$/publish-workstation=yes\n/' /etc/avahi/avahi-daemon.conf
 	perl -pi -e 's/^publish-hinfo=[A-Za-z]+\s?$/publish-hinfo=yes\n/' /etc/avahi/avahi-daemon.conf
-	rm -f /etc/avahi/services/http.service /etc/avahi/services/https.service /etc/avahi/services/cockpit.service
 	deb-systemd-invoke enable avahi-daemon
 	deb-systemd-invoke restart avahi-daemon
-
-	# Services to start on boot
-	deb-systemd-invoke enable cockpit.socket
-
-	# Change default firewalld zone
-	if [ "$(firewall-cmd --state)" = "running" ]; then
-		deb-systemd-invoke reload firewalld
-		firewall-cmd --set-default-zone=ffdl
-	else
-		firewall-offline-cmd --set-default-zone=ffdl
-	fi
 
 	# Customize dphys-swapfile if its installed
 	if [ -f /etc/dphys-swapfile ]; then
@@ -50,21 +38,6 @@ do_configure() {
 			fi
 		fi
 		deb-systemd-invoke enable dphys-swapfile
-	fi
-
-	[ -f /boot/firmware/wifi.nmconnection ] && rm -f /boot/firmware/wifi.nmconnection
-	[ -f /boot/wifi.nmconnection ] && rm -f /boot/wifi.nmconnection
-	[ -f /etc/NetworkManager/system-connections/wifi.nmconnection ] && \
-		rm -f /etc/NetworkManager/system-connections/wifi.nmconnection
-
-	if [ -f /opt/custompios/copy-network-manager-config ]; then
-		rm -f /opt/custompios/copy-network-manager-config
-	fi
-
-	if [ -f /etc/systemd/system/copy-network-manager-config\@.service ]; then
-		deb-systemd-invoke stop copy-network-manager-config@wlan0.service
-		deb-systemd-invoke disable copy-network-manager-config@wlan0.service
-		rm -f /etc/systemd/system/copy-network-manager-config\@.service
 	fi
 }
 

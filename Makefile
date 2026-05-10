@@ -3,7 +3,7 @@
 #
 SRCNAME 	= firefly-logger-appliance
 PKGNAME 	= $(SRCNAME)
-RELVER 		= 1.1.1
+RELVER 		= 1.2
 DEBVER 		= 1
 RELPLAT 	?= deb$(shell lsb_release -rs 2> /dev/null)
 
@@ -13,8 +13,7 @@ docdir			?= $(prefix)/share/doc/$(PKGNAME)
 BUILDABLES = \
 	apache2 \
 	avahi \
-	bin \
-	firewalld 
+	bin
 
 #ifdef DESTDIR
 FULL_DESTDIR = $(shell readlink -f $(DESTDIR))
